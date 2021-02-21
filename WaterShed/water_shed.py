@@ -14,7 +14,7 @@ import cv2
 
 # read in images
 dir_name = os.path.dirname(__file__)
-image = cv2.imread(os.path.join(dir_name, '../imgs/multiple_bees.jpg'))
+image = cv2.imread(os.path.join(dir_name, '../imgs/4bees_real.png'))
 
 # convert to grayscale
 img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -44,6 +44,7 @@ markers_labels = cv2.watershed(image, markers)
 print(markers_labels)
 image[markers == -1] = [255, 0, 0]
 
+cv2.imwrite('results/4bees_real.png', image)
 cv2.imshow("Water Shed", image)
 
 while True:

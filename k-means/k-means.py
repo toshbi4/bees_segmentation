@@ -6,7 +6,7 @@ import os
 np.set_printoptions(threshold=2000000)
 
 dir_name = os.path.dirname(__file__)
-image = cv2.imread(os.path.join(dir_name, '../imgs/4bees.jpeg'))
+image = cv2.imread(os.path.join(dir_name, '../imgs/4bees_real.png'))
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 histogram = cv2.calcHist([gray], [0], None, [256], [0, 256])
@@ -46,6 +46,7 @@ print(res.shape)
 print(res)
 res2 = res.reshape(image.shape)
 
+cv2.imwrite('results/4bees_real.png', res2)
 cv2.imshow('res2', res2)
 cv2.waitKey(0)
 cv2.destroyAllWindows()

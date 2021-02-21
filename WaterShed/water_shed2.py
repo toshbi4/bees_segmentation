@@ -8,7 +8,7 @@ import os
 # Load in image, convert to gray scale, and Otsu's threshold
 # read in images
 dir_name = os.path.dirname(__file__)
-image = cv2.imread(os.path.join(dir_name, '../imgs/multiple_bees.jpg'))
+image = cv2.imread(os.path.join(dir_name, '../imgs/4bees_real.png'))
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
 # Compute Euclidean distance from every binary pixel
@@ -44,5 +44,6 @@ for label in np.unique(labels):
         print(count)
 
 print(total_area)
+cv2.imwrite('results/4bees_real.png', image)
 cv2.imshow('image', image)
 cv2.waitKey()
